@@ -10,8 +10,8 @@ public class BoardVO {
     private int board_id;
     private String title;
     private String content;
-    private String created;
-    private String updated;
+//    private String created;
+//    private String updated;
 
 
 

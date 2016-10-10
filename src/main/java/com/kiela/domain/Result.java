@@ -11,6 +11,11 @@ public class Result {
     private int result;
     private String msg;
 
+    public Result(int result, String msg) {
+        this.result=result;
+        this.msg = msg;
+    }
+
 /*    public Result(int result, String msg){
         this.result=result;
         this.msg=msg;
