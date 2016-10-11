@@ -13,4 +13,9 @@ public class TestProjectApplicationTests {
 	public void contextLoads() {
 	}
 
+	@Test
+	public void nothing(){
+
+	}
+
 }

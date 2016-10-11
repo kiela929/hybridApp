@@ -3,9 +3,10 @@ package com.kiela.controller;
 
 import com.kiela.domain.BoardVO;
 import com.kiela.domain.Result;
+import com.kiela.persistence.BoardMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -19,6 +20,8 @@ import java.util.List;
  */
 @RestController
 public class ApiController {
+    @Autowired
+    private BoardMapper boardMapper;
 
     @RequestMapping("/hello")
     public String Hello(){
@@ -36,13 +39,26 @@ public class ApiController {
     하지만 lombok이 toString 메서드를 오버라이딩하여서
     board안에 있는 인스턴스 멤버값을 모두 출력해준다.
      */
+
+        boardMapper.insertBoard(board);
+
         return new Result(0,"success");
+    }
+
+    //게시판 글 상세 보기
+    @RequestMapping(method=RequestMethod.GET, value = "/api/board/{board_id}")
+    public BoardVO getBoard(@PathVariable int board_id){
+        System.out.println("board_id:"+board_id);
+
+        BoardVO board=boardMapper.findById(board_id);
+
+        return board;
     }
 
     //게시판 글 목록 보기
     @RequestMapping(method=RequestMethod.GET, value="/api/board")
     public List<BoardVO> getBoardList(){
-        BoardVO board = new BoardVO();
+       /* BoardVO board = new BoardVO();
         board.setBoard_id(1);
         board.setTitle("제목");
         board.setContent("내용");
@@ -50,7 +66,9 @@ public class ApiController {
         ArrayList<BoardVO> boardList= new ArrayList<BoardVO>();
         boardList.add(board);
 
-        return boardList;
+        return boardList;*/
+
+       return boardMapper.findAll();
     }
 
     //게시판 글 수정하기

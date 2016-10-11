@@ -1,0 +1,10 @@
+datasource:
+  driver-class-name: "com.mysql.jdbc.Driver"
+  url: "jdbc:mysql://52.78.34.39:3306/testdb?useUnicode=true&charaterEncoding=utf-8"
+  user-name: "centos"
+  password: "1234"
+  initial-size: 10
+  max-active: 10
+  max-idle: 10
+  min-idle: 10
+  max-wait: 3000
